@@ -998,6 +998,7 @@ body {
     .main-content {
         padding: 0.5rem;
         padding-top: 70px;
+        padding-bottom: 100px; /* Add bottom padding to ensure button is not hidden by browser UI */
     }
     
     .hero-section {
@@ -1022,7 +1023,7 @@ body {
     }
     
     .joke-container {
-        margin: 1rem auto;
+        margin: 1rem auto 6rem; /* Add bottom margin to prevent content from being hidden behind fixed footer */
     }
     
     .joke-card {
@@ -1046,13 +1047,26 @@ body {
     }
     
     .joke-button, .share-button {
-        padding: 0.875rem 1.5rem;
-        font-size: 0.95rem;
+        padding: 1rem 2rem;
+        font-size: 1.1rem;
+        margin: 0.5rem 0;
+        width: 100%;
+        max-width: 300px;
+        display: block;
+        margin: 0.5rem auto;
     }
     
     .footer-controls {
-        padding: 0.75rem;
-        margin-top: 1rem;
+        position: fixed;
+        bottom: 0;
+        left: 0;
+        right: 0;
+        background: rgba(0, 0, 0, 0.7);
+        backdrop-filter: blur(10px);
+        padding: 1rem;
+        margin: 0;
+        z-index: 50;
+        box-shadow: 0 -5px 20px rgba(0, 0, 0, 0.2);
     }
     
     .control-group {
