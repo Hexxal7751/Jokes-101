@@ -1,0 +1,295 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width,initial-scale=1" />
+    <title>😂 Jokes 101 - Ultimate Comedy Experience 😂</title>
+    <meta name="description" content="Experience the most beautiful joke generator with stunning animations and premium design" />
+    <link rel="icon" type="image/x-icon" href="icon.ico" />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700;800&family=Inter:wght@300;400;500;600;700&family=Space+Grotesk:wght@300;400;500;600;700&display=swap"
+      rel="stylesheet"
+    />
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css" />
+    <link rel="stylesheet" href="styles.css" />
+  </head>
+  <body>
+    <!-- Loading Screen -->
+    <div id="loading-screen" class="loading-screen">
+      <div class="loading-content">
+        <div class="loading-logo">
+          <i class="fas fa-laugh-beam loading-icon"></i>
+          <h1>Jokes 101</h1>
+        </div>
+        <div class="loading-bar">
+          <div class="loading-progress"></div>
+        </div>
+        <p class="loading-text">Preparing the ultimate comedy experience...</p>
+      </div>
+    </div>
+
+    <!-- Background Effects -->
+    <canvas id="particle-canvas"></canvas>
+    <div class="floating-shapes">
+      <div class="shape shape-1"></div>
+      <div class="shape shape-2"></div>
+      <div class="shape shape-3"></div>
+      <div class="shape shape-4"></div>
+      <div class="shape shape-5"></div>
+    </div>
+    <noscript
+      ><div
+        style="position:fixed;top:0;left:0;width:100vw;height:100vh;display:flex;align-items:center;justify-content:center;background:#222;color:#f4f4f4;font-family:Arial,sans-serif;font-size:1.1rem;text-align:center;padding:2rem;box-sizing:border-box;z-index:1000"
+      >
+        <div
+          style="max-width:700px;padding:20px;background:#333;border:2px solid #444;border-radius:8px;box-shadow:0 4px 12px rgba(0,0,0,.5)"
+        >
+          <p
+            style="font-size:1.4rem;font-weight:700;color:#ff5f5f;margin-bottom:1rem"
+          >
+            🚫 JavaScript Disabled
+          </p>
+          <p style="margin-bottom:1.5rem;line-height:1.6">
+            JavaScript is disabled in your browser! This site requires
+            JavaScript to function. Please enable JavaScript in your browser
+            settings to continue.
+          </p>
+          <p style="font-weight:700;color:#ffdd57;margin-bottom:1rem">
+            Tips to Enable JavaScript:
+          </p>
+          <ul
+            style="text-align:left;max-width:600px;margin:0 auto 1.5rem;padding:0;list-style-type:none;color:#ccc"
+          >
+            <li style="margin-bottom:.5rem">
+              ➤ Go to your browser settings (usually under<em
+                >Privacy & Security</em
+              >or<em>Site Settings</em>).
+            </li>
+            <li style="margin-bottom:.5rem">
+              ➤ Locate the JavaScript section and turn it on.
+            </li>
+            <li style="margin-bottom:.5rem">
+              ➤ Reload this page after enabling JavaScript.
+            </li>
+          </ul>
+          <p style="margin-top:1.5rem;color:#a5a5a5">
+            If you're viewing this page locally on an Android device, avoid
+            using "HTML Viewer."
+          </p>
+          <p style="margin-top:1rem;color:#a5a5a5">
+            If issues persist, switch to a modern browser or update your current
+            one.
+          </p>
+        </div>
+      </div></noscript
+    >
+    <!-- Navigation -->
+    <nav class="top-nav">
+      <div class="nav-brand">
+        <i class="fas fa-laugh-wink"></i>
+        <span>Jokes 101</span>
+      </div>
+      <div class="nav-actions">
+        <button class="nav-btn" onclick="toggleFullscreen()" title="Toggle Fullscreen">
+          <i class="fas fa-expand"></i>
+        </button>
+        <button class="nav-btn settings-button" onclick="toggleSettingsPane()" title="Settings">
+          <i class="fas fa-cog"></i>
+        </button>
+      </div>
+    </nav>
+    <div class="settings-pane" id="settingsPane">
+      <div class="settings-header">
+        <h1><i class="fas fa-cog"></i> Settings</h1>
+        <button class="close-button" onclick="toggleSettingsPane()">
+          <i class="fas fa-times"></i>
+        </button>
+      </div>
+      <div class="settings-section">
+        <div class="setting-item">
+          <label class="setting-label">
+            <i class="fas fa-clock"></i>
+            <span>Punchline Delay</span>
+          </label>
+          <div class="slider-container">
+            <input
+              type="range"
+              min="0"
+              max="5000"
+              value="2500"
+              step="500"
+              id="delaySlider"
+              class="modern-slider"
+            />
+            <span id="delayValue" class="slider-value"></span>
+          </div>
+        </div>
+        <div class="setting-item">
+          <label class="setting-label">
+            <i class="fas fa-palette"></i>
+            <span>Theme Selection</span>
+          </label>
+          <div class="theme-grid">
+            <div class="theme-option" data-theme="default">
+              <div class="theme-preview default-preview"></div>
+              <span>Ocean Breeze</span>
+            </div>
+            <div class="theme-option" data-theme="dgreen-dblue">
+              <div class="theme-preview emerald-preview"></div>
+              <span>Emerald Abyss</span>
+            </div>
+            <div class="theme-option" data-theme="violet-pink">
+              <div class="theme-preview mystic-preview"></div>
+              <span>Mystic Aurora</span>
+            </div>
+            <div class="theme-option" data-theme="orange-red">
+              <div class="theme-preview sunset-preview"></div>
+              <span>Sunset Glow</span>
+            </div>
+            <div class="theme-option" data-theme="dpurple-eblue">
+              <div class="theme-preview neon-preview"></div>
+              <span>Neon Night</span>
+            </div>
+            <div class="theme-option" data-theme="red-dpurple">
+              <div class="theme-preview cyber-preview"></div>
+              <span>Cyber Inferno</span>
+            </div>
+            <div class="theme-option" data-theme="pinkdw-qpink">
+              <div class="theme-preview blush-preview"></div>
+              <span>Blush Quartz</span>
+            </div>
+            <div class="theme-option" data-theme="dlavender-magentah">
+              <div class="theme-preview lavender-preview"></div>
+              <span>Lavender Crush</span>
+            </div>
+          </div>
+        </div>
+        
+        <div class="setting-item">
+          <button class="credits-button" onclick="toggleCredits()">
+            <i class="fas fa-star"></i>
+            <span>Credits & Info</span>
+          </button>
+        </div>
+      </div>
+      <div id="creditsPane" class="credits-pane">
+        <div class="credits-content">
+          <div class="credits-header">
+            <i class="fas fa-code"></i>
+            <h3>Created With ❤️</h3>
+          </div>
+          <div class="credits-info">
+            <div class="creator-card">
+              <div class="creator-avatar">
+                <i class="fas fa-user-astronaut"></i>
+              </div>
+              <div class="creator-details">
+                <h4>Hexxal7751</h4>
+                <p>Full-Stack Developer & Designer</p>
+              </div>
+            </div>
+            <div class="social-links">
+              <a href="https://www.youtube.com/@Hexxal7751" target="_blank" class="social-link youtube">
+                <i class="fab fa-youtube"></i>
+                <span>YouTube Channel</span>
+              </a>
+              <div class="social-link discord">
+                <i class="fab fa-discord"></i>
+                <span>hexxal.7751</span>
+              </div>
+            </div>
+            <div class="tech-stack">
+              <span class="tech-tag">HTML5</span>
+              <span class="tech-tag">CSS3</span>
+              <span class="tech-tag">JavaScript</span>
+              <span class="tech-tag">Canvas API</span>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <!-- Main Content -->
+    <main class="main-content">
+      <div class="hero-section">
+        <div class="hero-content">
+          <div class="logo-container">
+            <div class="logo-icon">
+              <i class="fas fa-laugh-beam"></i>
+            </div>
+            <h1 class="hero-title">
+              <span class="title-main">Jokes</span>
+              <span class="title-accent">101</span>
+            </h1>
+            <p class="hero-subtitle">The Ultimate Comedy Experience</p>
+          </div>
+        </div>
+      </div>
+
+      <div class="joke-container">
+        <div class="joke-card">
+          <div class="joke-header">
+            <i class="fas fa-quote-left quote-icon"></i>
+            <div class="joke-status" id="jokeStatus">
+              <span class="status-dot"></span>
+              <span class="status-text">Ready for laughs!</span>
+            </div>
+          </div>
+          
+          <div class="joke-content">
+            <div class="joke-text" id="joke">
+              <span class="welcome-text">Click the button below to unleash the comedy!</span>
+            </div>
+            <div class="punchline-text" id="punchline"></div>
+          </div>
+          
+          <div class="joke-actions">
+            <button id="jokebutton" class="joke-button" onclick="getJoke()">
+              <span class="button-content">
+                <i class="fas fa-magic button-icon"></i>
+                <span class="button-text">Generate Joke</span>
+              </span>
+              <div class="button-ripple"></div>
+            </button>
+            
+            <!-- Share Button (Inside joke actions) -->
+            <div class="share-container" style="display: none;" id="shareContainer">
+              <button id="shareButton" class="share-button" onclick="shareJoke()">
+                <span class="button-content">
+                  <i class="fas fa-share-alt button-icon"></i>
+                  <span class="button-text">Share Joke</span>
+                </span>
+                <div class="button-ripple"></div>
+              </button>
+            </div>
+          </div>
+        </div>
+      </div>
+    </main>
+    <!-- Footer Controls -->
+    <footer class="footer-controls">
+      <div class="control-group">
+        <div class="tts-control">
+          <label class="tts-label">
+            <i class="fas fa-volume-up"></i>
+            <span>Text-to-Speech</span>
+          </label>
+          <div class="toggle-container">
+            <div class="toggle-checkbox" id="ttsToggle"></div>
+            <span class="toggle-status" id="statusText">Enabled</span>
+          </div>
+        </div>
+      </div>
+    </footer>
+    <!-- Share Notification -->
+    <div id="shareNotification" class="share-notification">
+      <i class="fas fa-check-circle"></i>
+      <div>Joke image copied to clipboard!</div>
+    </div>
+    
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/html2canvas/1.4.1/html2canvas.min.js"></script>
+    <script src="script.js"></script>
+  </body>
+</html>
