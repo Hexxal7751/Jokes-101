@@ -15,7 +15,7 @@ A modern, interactive web application that generates and shares jokes with beaut
 ## How to Use
 
 1. Open `index.html` in your web browser
-2. Click the "Tell Me a Joke" button to generate a random joke
+2. Click the "Generate Joke" button to generate a random joke
 3. Use the settings icon (⚙️) to customize:
    - Theme selection
    - Punchline delay
